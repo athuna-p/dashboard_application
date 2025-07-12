@@ -13,8 +13,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    // "module": "preserve",
+    "moduleResolution": "node",
+    "module": "esnext",
   },
+
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
@@ -31,4 +34,5 @@
       "path": "./tsconfig.spec.json"
     }
   ]
+  
 }
