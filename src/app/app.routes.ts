@@ -10,6 +10,10 @@ export const routes: Routes = [
       path: 'dashboard',
       loadChildren: () => import('./dashboard/dashboard-module').then(m => m.DashboardModule)
     },
+    {
+      path: 'chat',
+      loadComponent: () => import('./chat/chat.component/chat.component').then(m => m.ChatComponent)
+    }
   ];
   @NgModule({
     imports: [RouterModule.forRoot(routes)],

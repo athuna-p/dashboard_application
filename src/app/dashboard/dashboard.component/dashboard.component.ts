@@ -25,4 +25,7 @@ export class DashboardComponent {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+  openChat() {
+    this.router.navigate(['/chat']);
+  }
 }

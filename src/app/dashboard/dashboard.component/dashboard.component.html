@@ -1,6 +1,11 @@
-<mat-card>
-    <h2>Welcome!</h2>
-    <p>Your role: {{ role }}</p>
-    <button mat-button (click)="logout()">Logout</button>
-  </mat-card>
-  
+<mat-toolbar color="primary">
+  <span>Dashboard</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="openChat()" aria-label="Chat">
+    <mat-icon>chat</mat-icon>
+  </button>
+  <button mat-icon-button (click)="logout()" aria-label="Logout">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
