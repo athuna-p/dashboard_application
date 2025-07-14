@@ -2,7 +2,6 @@
   <button mat-icon-button (click)="goToDashboard()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <!-- <h3 style="margin: 0;">Chat</h3> -->
 </div>
 
 <div style="margin: 10px 0;">
@@ -12,15 +11,28 @@
   </button>
 </div>
 
+<h3 style="text-align: center; margin: 10px 0;">
+  {{ isGroup ? 'Group Chat' : (selectedUser ? selectedUser : '') }}
+</h3>
+
 <mat-card class="chat-card">
   <div class="messages-container">
     <div *ngFor="let message of messages" [ngClass]="{'sent': message.fromSelf, 'received': !message.fromSelf}">
       <span>{{ message.text }}</span>
+      <div *ngIf="message.imageUrl">
+        <img [src]="message.imageUrl" alt="Attachment" style="max-width: 150px; margin-top: 5px;" />
+      </div>
     </div>
   </div>
 
   <div class="input-container">
     <input matInput placeholder="Type a message" [formControl]="messageControl" (keyup.enter)="sendMessage()" />
+
+    <button mat-icon-button color="primary" (click)="fileInput.click()">
+      <mat-icon>attach_file</mat-icon>
+    </button>
+    <input type="file" #fileInput style="display: none;" (change)="onFileSelected($event)" />
+
     <button mat-icon-button color="primary" (click)="sendMessage()">
       <mat-icon>send</mat-icon>
     </button>

@@ -7,6 +7,7 @@ export interface Message {
   fromUser?: string;
   toUser?: string;
   isGroup: boolean;
+  imageUrl?: string; 
 }
 
 @Injectable({ providedIn: 'root' })

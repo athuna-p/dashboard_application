@@ -31,6 +31,7 @@ export class ChatComponent {
   messageControl = new FormControl('');
   selectedUser: string | undefined = undefined;
   isGroup = true;
+  selectedFile: File | null = null;
 
   messages: Message[] = [];
   users = ['Alice', 'Bob', 'Charlie']; // Mock users
@@ -57,21 +58,29 @@ export class ChatComponent {
   }
 
   sendMessage() {
-    const text = this.messageControl.value;
-    if (!text || text.trim() === '') return;
+    const text = this.messageControl.value || '';
+
+    if (text.trim() === '' && !this.selectedFile) return;
+
+    let imageUrl: string | undefined;
+    if (this.selectedFile) {
+      imageUrl = URL.createObjectURL(this.selectedFile);
+    }
 
     const message: Message = {
-      text,
+      text: text || '📎 Attachment',
       fromSelf: true,
       isGroup: this.isGroup,
       toUser: this.isGroup ? undefined : this.selectedUser,
-      fromUser: 'Me'
+      fromUser: 'Me',
+      imageUrl: imageUrl
     };
 
     this.chatService.sendMessage(message);
     this.messageControl.reset();
+    this.selectedFile = null;
 
-    // 🟢 Simulate replies from mock users (for group chat)
+    // Mock replies
     if (this.isGroup) {
       this.users.forEach(user => {
         setTimeout(() => {
@@ -85,7 +94,6 @@ export class ChatComponent {
         }, 1000);
       });
     } else {
-      // 🟢 Private chat reply
       setTimeout(() => {
         const reply: Message = {
           text: `Reply from ${this.selectedUser}: ${text}`,
@@ -95,6 +103,13 @@ export class ChatComponent {
         };
         this.chatService.sendMessage(reply);
       }, 1000);
+    }
+  }
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
     }
   }
 
