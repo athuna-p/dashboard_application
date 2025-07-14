@@ -1,24 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Socket } from 'ngx-socket-io';
-import {Subject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ChatService {
-    private messageSubject = new Subject<string>();
-  constructor() {}
-
-  sendMessage(msg: string) {
-    this.messageSubject.next(`You: ${msg}`);
-
-    setTimeout(() => {
-      this.messageSubject.next(`Bot: I received "${msg}"`);
-    }, 1000);
-  }
-
-  getMessages(): Observable<string> {
-    return this.messageSubject.asObservable();
-  }
+export interface Message {
+  text: string;
+  fromSelf: boolean;
+  fromUser?: string;
+  toUser?: string;
+  isGroup: boolean;
 }
 
+@Injectable({ providedIn: 'root' })
+export class ChatService {
+  private messagesSubject = new BehaviorSubject<Message[]>([]);
+  messages$ = this.messagesSubject.asObservable();
+
+  private messages: Message[] = [];
+
+  sendMessage(msg: Message) {
+    this.messages.push(msg);
+    this.messagesSubject.next(this.messages);
+  }
+
+  getMessages() {
+    return this.messages;
+  }
+}
