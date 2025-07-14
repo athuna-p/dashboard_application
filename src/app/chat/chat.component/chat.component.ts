@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -27,7 +28,8 @@ export class ChatComponent {
   messages: { text: string; fromSelf: boolean; isGroup?: boolean }[] = [];
   messageControl = new FormControl('');
   isGroupChat = false; // <-- New flag
-
+  constructor( private router: Router) {
+  }
   sendMessage() {
     const text = this.messageControl.value;
     if (text && text.trim() !== '') {
@@ -46,5 +48,8 @@ export class ChatComponent {
 
   toggleGroupChat() {
     this.isGroupChat = !this.isGroupChat;
+  }
+  goToDashboard() {
+    this.router.navigate(['/dashboard']);
   }
 }

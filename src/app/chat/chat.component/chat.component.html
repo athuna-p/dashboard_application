@@ -1,5 +1,9 @@
-
-<mat-card class="chat-card">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+  <button mat-icon-button color="primary" (click)="goToDashboard()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <h3 style="margin: 0;">Chat</h3>
+</div><mat-card class="chat-card">
   <div class="messages-container">
     <div *ngFor="let message of messages" [ngClass]="{'sent': message.fromSelf, 'received': !message.fromSelf}">
       <span>{{ message.text }}</span>
