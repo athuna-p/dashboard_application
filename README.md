@@ -1,59 +1,78 @@
-# DashboardApplication
+Angular Dashboard Application with Real-Time Chat
+-------------------------------------------------
+This project is a performance-optimized Angular dashboard application that includes:
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+- JWT authentication with mock data
+<!-- - Role-based access control -->
+- Lazy-loaded modules for faster performance
+- Real-time group and private chat with simulated replies
+- File/image attachment support
+- Angular Material UI
+- Global HTTP error handling
+- Testing (unit & e2e)
 
-## Development server
+Features
+--------
 
-To start a local development server, run:
+- Login with reactive forms & validation  
+- Protected dashboard route with role-based guard  
+- Group and private chat functionality  
+- Simulated broadcast messages in group chat  
+- File and image attachment support in chat  
+- Lazy loading & code splitting for performance  
+- Optimized change detection (OnPush)  
+- Global error interceptor for HTTP errors  
+- Toast/snackbar feedback for user actions  
+- Unit tests (Jasmine & Karma)  
+- E2E tests (Cypress or Protractor) 
 
-```bash
-ng serve
-```
+Technologies Used
+-----------------
+- Angular 20
+- Angular Material
+- RxJS
+- ngx-socket-io 
+- Jasmine & Karma for unit tests
+- Cypress or Protractor for e2e tests
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Authentication
+--------------
+ Email               Password       Role  
+ -----               --------       ----
 
-## Code scaffolding
+ admin@demo.com      admin          admin
+ user@demo.com       user           user
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+ Chat Functionality
+ ------------------
+ -Group chat (broadcast to all mock users)
+ -Private chat (simulate one-to-one conversations)
+ -Simulated automatic replies
+ -Message bubbles styled similar to WhatsApp
+ -Image/file attachments supported 
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
 
-## Building
+ Project Structure
+ -----------------
+ src/
+│
+├── app/
+│   ├── auth/           # Login and authentication logic
+│   ├── chat/           # Chat component and service
+│   ├── dashboard/      # Dashboard component and routing
+│   ├── shared/         # Shared modules (e.g., Material)
+│   ├── app.routes.ts   # Application routes
+│   ├── app.config.ts   # Application configuration
+│
 
-To build the project run:
 
-```bash
-ng build
-```
+Testing
+-------
+-Jasmine & Karma setup
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+E2E Tests
+---------
+-Cypress or Protractor
+-Validate login, dashboard, and chat flows
