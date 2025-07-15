@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   private users = [
-    { email: 'admin@test.com', password: 'admin123', role: 'admin' },
-    { email: 'user@test.com', password: 'user123', role: 'user' }
+    { email: 'admin@test.com', password: 'admin', role: 'admin' },
+    { email: 'user@test.com', password: 'user', role: 'user' }
   ];
   constructor(private router: Router) {}
   login(email: string, password: string): boolean {

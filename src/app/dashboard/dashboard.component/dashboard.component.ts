@@ -14,9 +14,8 @@ import { MaterialModule } from '../../shared/material.module';
 export class DashboardComponent {
   role: string | undefined;
   constructor(private auth: AuthService, private router: Router) {
-    const role = this.auth.getRole();
-    console.log("hi");
-    
+    this.role = this.auth.getRole() || undefined;
+    console.log(this.role);    
 
   }
 
