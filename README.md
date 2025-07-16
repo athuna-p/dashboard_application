@@ -3,7 +3,6 @@ Angular Dashboard Application with Real-Time Chat
 This project is a performance-optimized Angular dashboard application that includes:
 
 - JWT authentication with mock data
-<!-- - Role-based access control -->
 - Lazy-loaded modules for faster performance
 - Real-time group and private chat with simulated replies
 - File/image attachment support
@@ -24,7 +23,7 @@ Features
 - Global error interceptor for HTTP errors  
 - Toast/snackbar feedback for user actions  
 - Unit tests (Jasmine & Karma)  
-- E2E tests (Cypress or Protractor) 
+- E2E tests (Cypress ) 
 
 Technologies Used
 -----------------
@@ -33,7 +32,7 @@ Technologies Used
 - RxJS
 - ngx-socket-io 
 - Jasmine & Karma for unit tests
-- Cypress or Protractor for e2e tests
+- Cypress  for e2e tests
 
 Authentication
 --------------
@@ -74,5 +73,5 @@ Testing
 
 E2E Tests
 ---------
--Cypress or Protractor
--Validate login, dashboard, and chat flows
+-Cypress
+-Validate login

@@ -5,10 +5,12 @@
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" type="email">
         <!-- <mat-error *ngIf="loginForm.controls.email.invalid">Valid email is required</mat-error> -->
-        <mat-error *ngIf="loginForm.controls['email'].invalid">
-          Password is required
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          Email is required
         </mat-error>
-      </mat-form-field>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email') && !loginForm.controls['email'].hasError('required')">
+          Invalid email
+        </mat-error>      </mat-form-field>
   
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Password</mat-label>
